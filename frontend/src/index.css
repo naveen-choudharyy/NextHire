@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #f5f7ff;
+  --color-brand-100: #ebf0ff;
+  --color-brand-200: #d5e0ff;
+  --color-brand-300: #a3beff;
+  --color-brand-400: #6691ff;
+  --color-brand-500: #4f46e5;
+  --color-brand-600: #4338ca;
+  --color-brand-700: #3730a3;
+  --color-brand-800: #1e1b4b;
+
+  --color-accent-50: #faf5ff;
+  --color-accent-100: #f3e8ff;
+  --color-accent-200: #e9d5ff;
+  --color-accent-500: #a855f7;
+  --color-accent-600: #9333ea;
+
+  --color-dark-900: #030712;
+  --color-dark-800: #111827;
+  --color-dark-700: #1f2937;
+  --color-dark-600: #374151;
+  --color-dark-500: #4b5563;
+
+  --font-sans: 'Outfit', 'Inter', sans-serif;
+}
+
+body {
+  font-family: 'Outfit', 'Inter', sans-serif;
+  @apply bg-dark-900 text-gray-100 antialiased selection:bg-brand-500 selection:text-white;
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-dark-800;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-dark-600 rounded-full hover:bg-brand-500 transition-colors;
+}
+
+/* Glassmorphism utility */
+.glass {
+  @apply bg-dark-800/60 backdrop-blur-md border border-dark-700;
+}
+
+.glass-premium {
+  @apply bg-gradient-to-br from-brand-800/40 via-dark-800/60 to-accent-600/20 backdrop-blur-md border border-brand-500/20;
+}
+
+/* Page Print Utilities */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  body.payment-required #root,
+  body.payment-required .builder-container,
+  body.payment-required #resume-pdf-target {
+    display: none !important;
+  }
+  body.payment-required::after {
+    content: "Payment Required\n\nYou must purchase a plan to download or print this resume. Please upgrade on NextHire." !important;
+    display: block !important;
+    position: fixed !important;
+    top: 35% !important;
+    left: 10% !important;
+    right: 10% !important;
+    text-align: center !important;
+    font-size: 26px !important;
+    font-family: 'Outfit', 'Inter', sans-serif !important;
+    font-weight: bold !important;
+    color: black !important;
+    white-space: pre-wrap !important;
+    line-height: 1.6 !important;
+  }
+}
+
+
+/* PDF Print Stylesheet (overrides Tailwind v4 CSS variables for html2canvas compatibility) */
+#resume-pdf-target.font-template-ats-friendly,
+#resume-pdf-target.font-template-ats-friendly * {
+  font-family: 'Times New Roman', Times, Baskerville, Georgia, serif !important;
+}
+
+#resume-pdf-target.font-template-modern,
+#resume-pdf-target.font-template-modern *,
+#resume-pdf-target.font-template-designer,
+#resume-pdf-target.font-template-designer *,
+#resume-pdf-target.font-template-software-developer,
+#resume-pdf-target.font-template-software-developer * {
+  font-family: 'Outfit', 'Inter', sans-serif !important;
+}
+
+#resume-pdf-target .font-mono,
+#resume-pdf-target .font-mono * {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+}
+
+/* Spacing & Layout Overrides */
+#resume-pdf-target .p-8 { padding: 32px !important; }
+#resume-pdf-target .p-6 { padding: 24px !important; }
+#resume-pdf-target .p-10 { padding: 40px !important; }
+#resume-pdf-target .px-16 { padding-left: 64px !important; padding-right: 64px !important; }
+#resume-pdf-target .py-12 { padding-top: 48px !important; padding-bottom: 48px !important; }
+#resume-pdf-target .py-9 { padding-top: 36px !important; padding-bottom: 36px !important; }
+#resume-pdf-target .pl-2 { padding-left: 8px !important; }
+#resume-pdf-target .pl-5 { padding-left: 20px !important; }
+#resume-pdf-target .mt-1 { margin-top: 4px !important; }
+#resume-pdf-target .mt-1\.5 { margin-top: 6px !important; }
+#resume-pdf-target .mt-2 { margin-top: 8px !important; }
+#resume-pdf-target .mt-3 { margin-top: 12px !important; }
+#resume-pdf-target .mt-4 { margin-top: 16px !important; }
+#resume-pdf-target .mt-6 { margin-top: 24px !important; }
+#resume-pdf-target .mb-1 { margin-bottom: 4px !important; }
+#resume-pdf-target .mb-1\.5 { margin-bottom: 6px !important; }
+#resume-pdf-target .mb-2 { margin-bottom: 8px !important; }
+#resume-pdf-target .mb-2\.5 { margin-bottom: 10px !important; }
+#resume-pdf-target .mb-3 { margin-bottom: 12px !important; }
+#resume-pdf-target .mb-4 { margin-bottom: 16px !important; }
+#resume-pdf-target .mb-5 { margin-bottom: 20px !important; }
+#resume-pdf-target .mb-6 { margin-bottom: 24px !important; }
+#resume-pdf-target .gap-1\.5 { gap: 6px !important; }
+#resume-pdf-target .gap-2 { gap: 8px !important; }
+#resume-pdf-target .gap-3 { gap: 12px !important; }
+#resume-pdf-target .gap-6 { gap: 24px !important; }
+#resume-pdf-target .gap-x-2\.5 { column-gap: 10px !important; }
+#resume-pdf-target .gap-x-4 { column-gap: 16px !important; }
+#resume-pdf-target .gap-y-1 { row-gap: 4px !important; }
+
+/* Font Size Overrides */
+#resume-pdf-target .text-\[11px\] { font-size: 11px !important; }
+#resume-pdf-target .text-\[12px\] { font-size: 12px !important; }
+#resume-pdf-target .text-\[13px\] { font-size: 13px !important; }
+#resume-pdf-target .text-\[13\.5px\] { font-size: 13.5px !important; }
+#resume-pdf-target .text-\[14px\] { font-size: 14px !important; }
+#resume-pdf-target .text-\[15px\] { font-size: 15px !important; }
+#resume-pdf-target .text-\[24px\] { font-size: 24px !important; }
+#resume-pdf-target .text-\[26px\] { font-size: 26px !important; }
+
+/* List Style Overrides */
+#resume-pdf-target .list-disc {
+  list-style-type: disc !important;
+}
+
+/* space-y-x overrides */
+#resume-pdf-target .space-y-0\.5 > :not(:last-child) { margin-bottom: 2px !important; }
+#resume-pdf-target .space-y-1 > :not(:last-child) { margin-bottom: 4px !important; }
+#resume-pdf-target .space-y-2 > :not(:last-child) { margin-bottom: 8px !important; }
+#resume-pdf-target .space-y-3 > :not(:last-child) { margin-bottom: 12px !important; }
+#resume-pdf-target .space-y-4 > :not(:last-child) { margin-bottom: 16px !important; }
+#resume-pdf-target .space-y-6 > :not(:last-child) { margin-bottom: 24px !important; }
+
+/* Color overrides */
+#resume-pdf-target .bg-slate-900 { background-color: #0f172a !important; }
+#resume-pdf-target .text-slate-100 { color: #f1f5f9 !important; }
+#resume-pdf-target .border-slate-700 { border-color: #334155 !important; }
+#resume-pdf-target .text-indigo-400 { color: #818cf8 !important; }
+#resume-pdf-target .text-slate-300 { color: #cbd5e1 !important; }
+#resume-pdf-target .bg-slate-800 { background-color: #1e293b !important; }
+#resume-pdf-target .text-slate-200 { color: #e2e8f0 !important; }
+#resume-pdf-target .text-slate-400 { color: #94a3b8 !important; }
+#resume-pdf-target .bg-slate-50 { background-color: #f8fafc !important; }
+#resume-pdf-target .text-indigo-600 { color: #4f46e5 !important; }
+#resume-pdf-target .text-slate-500 { color: #64748b !important; }
+#resume-pdf-target .text-slate-900 { color: #0f172a !important; }
+#resume-pdf-target .text-slate-700 { color: #334155 !important; }
+#resume-pdf-target .text-slate-600 { color: #475569 !important; }
+#resume-pdf-target .border-indigo-500 { border-color: #4f46e5 !important; }
+
+#resume-pdf-target .bg-stone-50 { background-color: #fafaf9 !important; }
+#resume-pdf-target .text-stone-800 { color: #292524 !important; }
+#resume-pdf-target .border-rose-500 { border-color: #f43f5e !important; }
+#resume-pdf-target .text-stone-900 { color: #1c1917 !important; }
+#resume-pdf-target .text-rose-500 { color: #f43f5e !important; }
+#resume-pdf-target .text-stone-500 { color: #78716c !important; }
+#resume-pdf-target .border-stone-200 { border-color: #e7e5e4 !important; }
+#resume-pdf-target .text-stone-600 { color: #44403c !important; }
+#resume-pdf-target .text-rose-500\/80 { color: rgba(244, 63, 94, 0.8) !important; }
+#resume-pdf-target .text-stone-400 { color: #a8a29e !important; }
+#resume-pdf-target .bg-rose-500\/10 { background-color: rgba(244, 63, 94, 0.1) !important; }
+#resume-pdf-target .text-rose-600 { color: #e11d48 !important; }
+#resume-pdf-target .border-rose-500\/10 { border-color: rgba(244, 63, 94, 0.1) !important; }
+
+#resume-pdf-target .text-slate-800 { color: #1e293b !important; }
+#resume-pdf-target .border-slate-800 { border-color: #1e293b !important; }
+#resume-pdf-target .border-slate-200 { border-color: #e2e8f0 !important; }
+#resume-pdf-target .bg-slate-100 { background-color: #f1f5f9 !important; }
+#resume-pdf-target .text-slate-700 { color: #334155 !important; }
+
+#resume-pdf-target .border-l-2 { border-left-width: 2px !important; }
+#resume-pdf-target .border-l-\[10px\] { border-left-width: 10px !important; }
+#resume-pdf-target .border-t-8 { border-top-width: 8px !important; }
+
+/* Light theme overrides */
+.light body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+.light header {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  border-color: #e2e8f0 !important;
+}
+
+.light .glass {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  border-color: #e2e8f0 !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03) !important;
+}
+
+.light .glass h1,
+.light .glass h2,
+.light .glass h3,
+.light .glass h4,
+.light .glass span,
+.light .glass p,
+.light .glass label,
+.light .glass li {
+  color: #0f172a !important;
+}
+
+.light .glass .text-gray-400,
+.light .glass .text-gray-500,
+.light .glass p.text-gray-400,
+.light .glass p.text-gray-500 {
+  color: #475569 !important;
+}
+
+.light .bg-dark-900,
+.light .bg-dark-950,
+.light .bg-dark-900\/50,
+.light .bg-dark-950\/50,
+.light .bg-dark-900\/20,
+.light .bg-dark-900\/60 {
+  background-color: #ffffff !important;
+}
+
+.light .bg-dark-800,
+.light .bg-dark-800\/60,
+.light .bg-dark-800\/20,
+.light .bg-dark-800\/40 {
+  background-color: #f1f5f9 !important;
+}
+
+.light .border-dark-700,
+.light .border-dark-800,
+.light .border-white\/5 {
+  border-color: #e2e8f0 !important;
+}
+
+.light .text-white,
+.light .text-gray-100,
+.light .text-gray-200,
+.light .text-gray-300 {
+  color: #0f172a !important;
+}
+
+.light .text-gray-400,
+.light .text-gray-500 {
+  color: #475569 !important;
+}
+
+.light input,
+.light textarea,
+.light select {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+.light input::placeholder,
+.light textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+.light input:focus,
+.light textarea:focus,
+.light select:focus {
+  border-color: #4f46e5 !important;
+}
+
+.light .border-brand-500\/20 {
+  border-color: rgba(79, 70, 229, 0.2) !important;
+}
+
+.light .bg-brand-500\/10 {
+  background-color: rgba(79, 70, 229, 0.1) !important;
+}
+
+.light .hover\:bg-dark-800:hover {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
+.light .bg-dark-950\/50 {
+  background-color: #ffffff !important;
+}
+
+.light .border-dark-800\/80 {
+  border-color: #e2e8f0 !important;
+}
+
+.light .logo-text {
+  background: none !important;
+  background-clip: unset !important;
+  -webkit-background-clip: unset !important;
+  color: #0f172a !important;
+}
+

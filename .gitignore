@@ -1,0 +1,20 @@
+# Node & Build caches
+node_modules/
+frontend/dist/
+dist/
+
+# Credentials & secrets
+backend/.env
+.env
+
+# System & temporary logs
+.DS_Store
+logs/
+__pycache__/
+*.log
+instance/
+.gemini/
+/backend/logs/
+/backend/instance/
+/frontend/node_modules/
+/backend/node_modules/
