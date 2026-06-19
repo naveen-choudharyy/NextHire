@@ -339,6 +339,7 @@ const Dashboard = () => {
           setShowQRScreen(false);
           fetchProfile();
           fetchPaymentHistory();
+          handleCreateResume();
         }
       } else {
         const verifyError = verifyData.message || (typeof verifyData.error === 'object' ? verifyData.error?.message : verifyData.error) || verifyData.msg || 'Payment verification failed';
