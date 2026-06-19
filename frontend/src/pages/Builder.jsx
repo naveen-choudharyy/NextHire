@@ -21,6 +21,25 @@ const Builder = () => {
   const navigate = useNavigate();
   const { user, token, getAuthHeaders, fetchProfile } = useAuth();
   
+  // Mobile responsive states
+  const [activeTab, setActiveTab] = useState('editor'); // 'editor' | 'preview'
+  const [previewScale, setPreviewScale] = useState(0.95);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 1024) {
+        const containerWidth = window.innerWidth - 32; // 16px padding on each side
+        const newScale = Math.min(1, containerWidth / 800);
+        setPreviewScale(newScale);
+      } else {
+        setPreviewScale(0.95);
+      }
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const [resumeTitle, setResumeTitle] = useState('My Resume');
   const [templateId, setTemplateId] = useState('ats-friendly');
   const [content, setContent] = useState({
@@ -798,26 +817,28 @@ const Builder = () => {
     <div className="flex flex-col h-[calc(100vh-4rem)]">
       
       {/* Top action bar */}
-      <div className="bg-dark-950 border-b border-dark-800 h-14 px-4 flex items-center justify-between flex-shrink-0">
-        <div className="flex items-center space-x-3">
-          <Link to="/dashboard" className="text-gray-400 hover:text-white" title="Dashboard">
-            <ArrowLeft className="h-5 w-5" />
-          </Link>
-          <input
-            type="text"
-            value={resumeTitle}
-            onChange={(e) => setResumeTitle(e.target.value)}
-            className="bg-transparent text-sm font-bold border-0 focus:ring-1 focus:ring-brand-500 rounded px-1.5 py-0.5 text-white max-w-[200px]"
-          />
+      <div className="bg-dark-950 border-b border-dark-800 lg:h-14 py-2.5 lg:py-0 px-4 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-2.5 flex-shrink-0">
+        <div className="flex items-center space-x-3 justify-between lg:justify-start w-full lg:w-auto">
+          <div className="flex items-center space-x-3">
+            <Link to="/dashboard" className="text-gray-400 hover:text-white" title="Dashboard">
+              <ArrowLeft className="h-5 w-5" />
+            </Link>
+            <input
+              type="text"
+              value={resumeTitle}
+              onChange={(e) => setResumeTitle(e.target.value)}
+              className="bg-transparent text-sm font-bold border-0 focus:ring-1 focus:ring-brand-500 rounded px-1.5 py-0.5 text-white max-w-[200px]"
+            />
+          </div>
         </div>
 
         {/* Action controls */}
-        <div className="flex items-center space-x-2.5 text-xs">
+        <div className="flex items-center space-x-2.5 text-xs overflow-x-auto w-full lg:w-auto pb-1 lg:pb-0 scrollbar-none flex-shrink-0">
           
           <select
             value={templateId}
             onChange={(e) => setTemplateId(e.target.value)}
-            className="bg-dark-900 border border-dark-700 text-xs rounded-lg p-1.5 focus:outline-none focus:ring-1 focus:ring-brand-500 text-white"
+            className="bg-dark-900 border border-dark-700 text-xs rounded-lg p-1.5 focus:outline-none focus:ring-1 focus:ring-brand-500 text-white flex-shrink-0"
           >
             <option value="ats-friendly">ATS-Friendly Layout</option>
             <option value="modern">Modern Sidebar</option>
@@ -827,7 +848,7 @@ const Builder = () => {
 
           <button
             onClick={handleCheckATS}
-            className="flex items-center space-x-1 px-3 py-1.5 rounded-lg border border-accent-500/20 text-accent-400 hover:bg-accent-500/10 font-medium transition"
+            className="flex items-center space-x-1 px-3 py-1.5 rounded-lg border border-accent-500/20 text-accent-400 hover:bg-accent-500/10 font-medium transition flex-shrink-0"
           >
             <CheckSquare className="h-3.5 w-3.5" />
             <span>Check ATS</span>
@@ -836,7 +857,7 @@ const Builder = () => {
           <button
             onClick={() => handleSave()}
             disabled={saving}
-            className="flex items-center space-x-1 bg-dark-900 border border-dark-700 hover:bg-dark-800 text-white px-3 py-1.5 rounded-lg transition disabled:opacity-50"
+            className="flex items-center space-x-1 bg-dark-900 border border-dark-700 hover:bg-dark-800 text-white px-3 py-1.5 rounded-lg transition disabled:opacity-50 flex-shrink-0"
           >
             {saving ? <RefreshCw className="h-3.5 w-3.5 animate-spin" /> : <Cloud className="h-3.5 w-3.5" />}
             <span>{saving ? 'Saving...' : 'Save'}</span>
@@ -844,7 +865,7 @@ const Builder = () => {
 
           <button
             onClick={handleDownloadPDF}
-            className="flex items-center space-x-1 bg-brand-500 hover:bg-brand-600 text-white px-3 py-1.5 rounded-lg transition font-semibold"
+            className="flex items-center space-x-1 bg-brand-500 hover:bg-brand-600 text-white px-3 py-1.5 rounded-lg transition font-semibold flex-shrink-0"
           >
             <Download className="h-3.5 w-3.5" />
             <span>PDF</span>
@@ -853,11 +874,31 @@ const Builder = () => {
         </div>
       </div>
 
+      {/* Mobile Toggle Tabs */}
+      <div className="flex lg:hidden bg-dark-950 border-b border-dark-800 text-xs font-bold text-gray-400 flex-shrink-0">
+        <button
+          onClick={() => setActiveTab('editor')}
+          className={`flex-1 py-3 text-center border-b-2 transition-all ${
+            activeTab === 'editor' ? 'border-brand-500 text-white bg-dark-900/40' : 'border-transparent hover:text-white'
+          }`}
+        >
+          Edit Details
+        </button>
+        <button
+          onClick={() => setActiveTab('preview')}
+          className={`flex-1 py-3 text-center border-b-2 transition-all ${
+            activeTab === 'preview' ? 'border-brand-500 text-white bg-dark-900/40' : 'border-transparent hover:text-white'
+          }`}
+        >
+          View Preview
+        </button>
+      </div>
+
       {/* Editor Body */}
       <div className="flex flex-1 overflow-hidden">
         
         {/* Left Column Accordion Scroll Form (All Stacked & Visible) */}
-        <div className="w-[500px] bg-dark-950 border-r border-dark-800 overflow-y-auto p-5 space-y-5 flex-shrink-0">
+        <div className={`w-full lg:w-[500px] bg-dark-950 border-r border-dark-800 overflow-y-auto p-4 lg:p-5 space-y-5 lg:flex-shrink-0 ${activeTab === 'editor' ? 'block' : 'hidden lg:block'}`}>
           
           {/* SECTION ARRANGEMENT */}
           <div className="glass rounded-xl border border-dark-800 overflow-hidden bg-dark-900/20 shadow-md">
@@ -1485,8 +1526,8 @@ const Builder = () => {
         </div>
 
         {/* Right Preview Panel */}
-        <div className="flex-1 bg-dark-900 overflow-y-auto p-8 flex justify-center">
-          <div className="scale-95 origin-top print:scale-100">
+        <div className={`flex-1 bg-dark-900 overflow-y-auto overflow-x-hidden p-4 lg:p-8 flex justify-center ${activeTab === 'preview' ? 'flex' : 'hidden lg:flex'}`}>
+          <div style={{ transform: `scale(${previewScale})`, transformOrigin: 'top center', width: '800px', flexShrink: 0 }} className="print:transform-none print:scale-100">
             <div className={`w-[800px] h-max bg-white shadow-lg font-template-${templateId}`} id="resume-pdf-target">
               {renderTemplate()}
             </div>
