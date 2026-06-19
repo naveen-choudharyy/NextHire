@@ -833,12 +833,12 @@ const Builder = () => {
         </div>
 
         {/* Action controls */}
-        <div className="flex items-center space-x-2.5 text-xs overflow-x-auto w-full lg:w-auto pb-1 lg:pb-0 scrollbar-none flex-shrink-0">
+        <div className="flex items-center space-x-2.5 text-xs overflow-x-auto w-full lg:w-auto pb-1 lg:pb-0 scrollbar-none flex-shrink-0 justify-between lg:justify-end">
           
           <select
             value={templateId}
             onChange={(e) => setTemplateId(e.target.value)}
-            className="bg-dark-900 border border-dark-700 text-xs rounded-lg p-1.5 focus:outline-none focus:ring-1 focus:ring-brand-500 text-white flex-shrink-0"
+            className="bg-dark-900 border border-dark-700 text-xs rounded-lg p-1.5 focus:outline-none focus:ring-1 focus:ring-brand-500 text-white flex-shrink-0 max-w-[125px] sm:max-w-none"
           >
             <option value="ats-friendly">ATS-Friendly Layout</option>
             <option value="modern">Modern Sidebar</option>
@@ -849,23 +849,26 @@ const Builder = () => {
           <button
             onClick={handleCheckATS}
             className="flex items-center space-x-1 px-3 py-1.5 rounded-lg border border-accent-500/20 text-accent-400 hover:bg-accent-500/10 font-medium transition flex-shrink-0"
+            title="Check ATS Score"
           >
             <CheckSquare className="h-3.5 w-3.5" />
-            <span>Check ATS</span>
+            <span className="hidden sm:inline">Check ATS</span>
           </button>
 
           <button
             onClick={() => handleSave()}
             disabled={saving}
             className="flex items-center space-x-1 bg-dark-900 border border-dark-700 hover:bg-dark-800 text-white px-3 py-1.5 rounded-lg transition disabled:opacity-50 flex-shrink-0"
+            title="Save Resume"
           >
             {saving ? <RefreshCw className="h-3.5 w-3.5 animate-spin" /> : <Cloud className="h-3.5 w-3.5" />}
-            <span>{saving ? 'Saving...' : 'Save'}</span>
+            <span className="hidden sm:inline">{saving ? 'Saving...' : 'Save'}</span>
           </button>
 
           <button
             onClick={handleDownloadPDF}
             className="flex items-center space-x-1 bg-brand-500 hover:bg-brand-600 text-white px-3 py-1.5 rounded-lg transition font-semibold flex-shrink-0"
+            title="Download PDF"
           >
             <Download className="h-3.5 w-3.5" />
             <span>PDF</span>
