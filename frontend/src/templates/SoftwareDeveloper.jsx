@@ -19,7 +19,7 @@ const SoftwareDeveloper = ({ content }) => {
     switch (secName) {
       case 'skills':
         return skills.length > 0 && (
-          <div className="mb-5" key="skills">
+          <div className="mb-5" key="skills" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
             <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Technical Toolkit</h2>
             <div className="flex flex-wrap gap-1.5 pt-1">
               {skills.map((skill, idx) => (
@@ -32,7 +32,7 @@ const SoftwareDeveloper = ({ content }) => {
         );
       case 'projects':
         return projects.length > 0 && (
-          <div className="mb-5" key="projects">
+          <div className="mb-5" key="projects" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
             <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Featured Projects</h2>
             <div className="space-y-4">
               {projects.map((proj, idx) => (
@@ -61,7 +61,7 @@ const SoftwareDeveloper = ({ content }) => {
         );
       case 'experience':
         return experience.length > 0 && (
-          <div className="mb-5" key="experience">
+          <div className="mb-5" key="experience" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
             <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Work & Internships</h2>
             <div className="space-y-4">
               {experience.map((exp, idx) => (
@@ -100,7 +100,7 @@ const SoftwareDeveloper = ({ content }) => {
         };
 
         return education.length > 0 && (
-          <div className="mb-5" key="education">
+          <div className="mb-5" key="education" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
             <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Education</h2>
             
             <div className="space-y-4 pt-1">
@@ -136,7 +136,7 @@ const SoftwareDeveloper = ({ content }) => {
         );
       case 'certifications':
         return certifications.length > 0 && (
-          <div className="mb-5" key="certifications">
+          <div className="mb-5" key="certifications" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
             <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Credentials</h2>
             <ul className="space-y-1.5 text-slate-600">
               {certifications.map((cert, idx) => (
@@ -149,7 +149,7 @@ const SoftwareDeveloper = ({ content }) => {
         );
       case 'achievements':
         return achievements.length > 0 && (
-          <div className="mb-5" key="achievements">
+          <div className="mb-5" key="achievements" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
             <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Key Awards</h2>
             <ul className="list-disc list-inside space-y-1 text-slate-600">
               {achievements.map((ach, idx) => (
@@ -186,7 +186,7 @@ const SoftwareDeveloper = ({ content }) => {
 
       {/* Summary */}
       {personal.summary && (
-        <div className="mb-5">
+        <div className="mb-5" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
           <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Profile</h2>
           <p className="text-justify leading-relaxed text-slate-700">{personal.summary}</p>
         </div>

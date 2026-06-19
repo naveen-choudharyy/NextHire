@@ -137,7 +137,7 @@ const ATSFriendly = ({ content }) => {
         };
 
         return education.length > 0 && (
-          <div className="mt-4 mb-2.5" key="education">
+          <div className="mt-4 mb-2.5" key="education" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
             <h2 className="text-[16px] font-bold tracking-wider text-black" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Education</h2>
             <div className="border-b border-black mt-1 mb-2"></div>
             
@@ -174,7 +174,7 @@ const ATSFriendly = ({ content }) => {
         );
       case 'experience':
         return experience.length > 0 && (
-          <div className="mt-4 mb-2.5" key="experience">
+          <div className="mt-4 mb-2.5" key="experience" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
             <h2 className="text-[16px] font-bold tracking-wider text-black" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Experience</h2>
             <div className="border-b border-black mt-1 mb-2"></div>
             <div className="space-y-3">
@@ -196,7 +196,7 @@ const ATSFriendly = ({ content }) => {
         );
       case 'projects':
         return projects.length > 0 && (
-          <div className="mt-4 mb-2.5" key="projects">
+          <div className="mt-4 mb-2.5" key="projects" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
             <h2 className="text-[16px] font-bold tracking-wider text-black" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Projects</h2>
             <div className="border-b border-black mt-1 mb-2"></div>
             <div className="space-y-3">
@@ -227,7 +227,7 @@ const ATSFriendly = ({ content }) => {
         );
       case 'skills':
         return ((skills.languages) || (skills.frameworks) || (skills.databases) || (skills.tools) || (skills.soft) || (skills.other)) && (
-          <div className="mt-4 mb-2.5" key="skills">
+          <div className="mt-4 mb-2.5" key="skills" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
             <h2 className="text-[16px] font-bold tracking-wider text-black" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Technical Skills</h2>
             <div className="border-b border-black mt-1 mb-2"></div>
             <div className="space-y-1 text-black leading-relaxed text-[14px]">
@@ -266,7 +266,7 @@ const ATSFriendly = ({ content }) => {
         );
       case 'certifications':
         return certifications.length > 0 && (
-          <div className="mt-4 mb-2.5" key="certifications">
+          <div className="mt-4 mb-2.5" key="certifications" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
             <h2 className="text-[16px] font-bold tracking-wider text-black" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Certifications</h2>
             <div className="border-b border-black mt-1 mb-2"></div>
             <div className="space-y-1 text-black text-[14px]" style={{ paddingLeft: '15px' }}>
@@ -283,7 +283,7 @@ const ATSFriendly = ({ content }) => {
         );
       case 'achievements':
         return achievements.length > 0 && (
-          <div className="mt-4 mb-2.5" key="achievements">
+          <div className="mt-4 mb-2.5" key="achievements" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
             <h2 className="text-[16px] font-bold tracking-wider text-black" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Achievements</h2>
             <div className="border-b border-black mt-1 mb-2"></div>
             <div className="space-y-1 text-black text-[14px]" style={{ paddingLeft: '15px' }}>
@@ -322,7 +322,7 @@ const ATSFriendly = ({ content }) => {
 
       {/* Profile Summary (Optional) */}
       {personal.summary && (
-        <div className="mt-4 mb-2.5">
+        <div className="mt-4 mb-2.5" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
           <h2 className="text-[16px] font-bold tracking-wider text-black" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Professional Summary</h2>
           <div className="border-b border-black mt-1 mb-2"></div>
           <p className="text-justify text-black leading-relaxed">{personal.summary}</p>

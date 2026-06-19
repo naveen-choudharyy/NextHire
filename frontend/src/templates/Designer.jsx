@@ -32,7 +32,7 @@ const Designer = ({ content }) => {
 
       {/* Summary */}
       {personal.summary && (
-        <div className="mb-6">
+        <div className="mb-6" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
           <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest mb-2" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>My Story</h2>
           <p className="text-justify text-stone-600 leading-relaxed text-[14px]">{personal.summary}</p>
         </div>
@@ -46,7 +46,7 @@ const Designer = ({ content }) => {
           
           {/* Experience */}
           {experience.length > 0 && (
-            <div className="space-y-3">
+            <div className="space-y-3" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
               <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest border-b border-stone-200 pb-1" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Professional Experience</h2>
               <div className="space-y-4">
                 {experience.map((exp, idx) => (
@@ -65,7 +65,7 @@ const Designer = ({ content }) => {
 
           {/* Projects */}
           {projects.length > 0 && (
-            <div className="space-y-3">
+            <div className="space-y-3" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
               <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest border-b border-stone-200 pb-1" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Featured Work</h2>
               <div className="space-y-4">
                 {projects.map((proj, idx) => (
@@ -98,7 +98,7 @@ const Designer = ({ content }) => {
           
           {/* Skills */}
           {skills.length > 0 && (
-            <div className="space-y-2">
+            <div className="space-y-2" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
               <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest border-b border-stone-200 pb-1" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Creative Skills</h2>
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {skills.map((skill, idx) => (
@@ -112,7 +112,7 @@ const Designer = ({ content }) => {
 
           {/* Education */}
           {education.length > 0 && (
-            <div className="space-y-2">
+            <div className="space-y-2" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
               <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest border-b border-stone-200 pb-1" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Education</h2>
               <div className="space-y-3">
                 {education.map((edu, idx) => (
@@ -128,7 +128,7 @@ const Designer = ({ content }) => {
 
           {/* Certifications */}
           {certifications.length > 0 && (
-            <div className="space-y-2">
+            <div className="space-y-2" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
               <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest border-b border-stone-200 pb-1" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Credentials</h2>
               <div className="space-y-2 text-[12.5px] text-stone-600">
                 {certifications.map((cert, idx) => (
@@ -143,7 +143,7 @@ const Designer = ({ content }) => {
 
           {/* Achievements */}
           {achievements.length > 0 && (
-            <div className="space-y-2">
+            <div className="space-y-2" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
               <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest border-b border-stone-200 pb-1" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Achievements</h2>
               <ul className="list-disc list-inside space-y-1 text-[12.5px] text-stone-600">
                 {achievements.map((ach, idx) => (

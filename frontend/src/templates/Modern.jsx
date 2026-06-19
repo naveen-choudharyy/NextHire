@@ -89,7 +89,7 @@ const Modern = ({ content }) => {
         
         {/* Profile Summary */}
         {personal.summary && (
-          <div className="space-y-2">
+          <div className="space-y-2" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
             <h2 className="text-[16px] font-bold uppercase tracking-wider text-slate-900 border-b-2 border-indigo-500 pb-1.5" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Profile</h2>
             <p className="text-justify leading-relaxed text-slate-700">{personal.summary}</p>
           </div>
@@ -97,7 +97,7 @@ const Modern = ({ content }) => {
 
         {/* Experience */}
         {experience.length > 0 && (
-          <div className="space-y-3">
+          <div className="space-y-3" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
             <h2 className="text-[16px] font-bold uppercase tracking-wider text-slate-900 border-b-2 border-indigo-500 pb-1.5" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Experience</h2>
             <div className="space-y-4">
               {experience.map((exp, idx) => (
@@ -119,7 +119,7 @@ const Modern = ({ content }) => {
 
         {/* Projects */}
         {projects.length > 0 && (
-          <div className="space-y-3">
+          <div className="space-y-3" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
             <h2 className="text-[16px] font-bold uppercase tracking-wider text-slate-900 border-b-2 border-indigo-500 pb-1.5" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Projects</h2>
             <div className="space-y-4">
               {projects.map((proj, idx) => (
@@ -148,7 +148,7 @@ const Modern = ({ content }) => {
 
         {/* Education */}
         {education.length > 0 && (
-          <div className="space-y-3">
+          <div className="space-y-3" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
             <h2 className="text-[16px] font-bold uppercase tracking-wider text-slate-900 border-b-2 border-indigo-500 pb-1.5" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Education</h2>
             <div className="space-y-3">
               {education.map((edu, idx) => (
@@ -169,7 +169,7 @@ const Modern = ({ content }) => {
 
         {/* Achievements */}
         {achievements.length > 0 && (
-          <div className="space-y-3">
+          <div className="space-y-3" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
             <h2 className="text-[16px] font-bold uppercase tracking-wider text-slate-900 border-b-2 border-indigo-500 pb-1.5" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Achievements</h2>
             <ul className="list-disc list-inside space-y-1 text-slate-600">
               {achievements.map((ach, idx) => (
