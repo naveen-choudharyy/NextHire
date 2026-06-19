@@ -25,9 +25,7 @@ export const logger = winston.createLogger({
   ],
 });
 
-// If not in production, log to console with colors
-if (process.env.NODE_ENV !== 'production') {
-  logger.add(new winston.transports.Console({
-    format: consoleFormat
-  }));
-}
+// Log to console in all environments (essential for Docker/Render/Heroku stdout logs)
+logger.add(new winston.transports.Console({
+  format: consoleFormat
+}));
