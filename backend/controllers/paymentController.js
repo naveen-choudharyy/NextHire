@@ -9,7 +9,7 @@ import { config } from '../config/index.js';
 import { BadRequestError, NotFoundError } from '../utils/errors.js';
 
 const PRICING_PLANS = {
-  basic: 30.00
+  basic: 1.00
 };
 
 class PaymentController {
