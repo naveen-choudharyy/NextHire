@@ -13,7 +13,8 @@ import Designer from '../templates/Designer';
 
 import {
   ArrowLeft, Cloud, Download, Sparkles, Plus, Trash2, Eye, Award, CheckCircle,
-  HelpCircle, RefreshCw, Smartphone, Monitor, Globe, FileCode, CheckSquare, ChevronDown, ChevronUp
+  HelpCircle, RefreshCw, Smartphone, Monitor, Globe, FileCode, CheckSquare, ChevronDown, ChevronUp,
+  Check, AlertCircle
 } from 'lucide-react';
 
 const Builder = () => {
@@ -107,6 +108,11 @@ const Builder = () => {
   const [timeLeft, setTimeLeft] = useState(300); // 5 minutes in seconds
   const [transactionId, setTransactionId] = useState('');
   const [paymentVerifying, setPaymentVerifying] = useState(false);
+
+  const [autosaveStatus, setAutosaveStatus] = useState('saved'); // 'saved' | 'saving' | 'error'
+  const isLoadedRef = useRef(false);
+  const skipFirstSaveRef = useRef(true);
+  const autosaveTimerRef = useRef(null);
 
   // Reset QR state variables when modal opens/closes
   useEffect(() => {
@@ -257,6 +263,7 @@ const Builder = () => {
         setContent(parsedContent);
         setIsPublic(data.is_public);
         setPortfolioSlug(data.portfolio_slug || '');
+        isLoadedRef.current = true;
       } else {
         alert('Failed to load resume details.');
         navigate('/dashboard');
@@ -394,6 +401,49 @@ const Builder = () => {
       if (!silent) setSaving(false);
     }
   };
+
+  const handleManualSave = async () => {
+    if (autosaveTimerRef.current) {
+      clearTimeout(autosaveTimerRef.current);
+    }
+    setAutosaveStatus('saving');
+    try {
+      await handleSave(false);
+      setAutosaveStatus('saved');
+    } catch (e) {
+      setAutosaveStatus('error');
+    }
+  };
+
+  useEffect(() => {
+    if (!isLoadedRef.current) return;
+    if (skipFirstSaveRef.current) {
+      skipFirstSaveRef.current = false;
+      return;
+    }
+
+    setAutosaveStatus('saving');
+
+    if (autosaveTimerRef.current) {
+      clearTimeout(autosaveTimerRef.current);
+    }
+
+    autosaveTimerRef.current = setTimeout(async () => {
+      try {
+        await handleSave(true);
+        setAutosaveStatus('saved');
+      } catch (err) {
+        console.error("Autosave failed:", err);
+        setAutosaveStatus('error');
+      }
+    }, 2000);
+
+    return () => {
+      if (autosaveTimerRef.current) {
+        clearTimeout(autosaveTimerRef.current);
+      }
+    };
+  }, [content, resumeTitle, templateId, isPublic, portfolioSlug]);
 
   // PDF Download Trigger
   const handleDownloadPDF = async () => {
@@ -830,6 +880,24 @@ const Builder = () => {
               onChange={(e) => setResumeTitle(e.target.value)}
               className="bg-transparent text-sm font-bold border-0 focus:ring-1 focus:ring-brand-500 rounded px-1.5 py-0.5 text-white max-w-[200px]"
             />
+            {autosaveStatus === 'saving' && (
+              <span className="text-[10px] text-gray-400 flex items-center space-x-1 animate-pulse">
+                <RefreshCw className="h-3 w-3 animate-spin text-brand-500" />
+                <span>Autosaving...</span>
+              </span>
+            )}
+            {autosaveStatus === 'saved' && (
+              <span className="text-[10px] text-green-400 flex items-center space-x-1">
+                <Check className="h-3 w-3 text-green-400" />
+                <span>All changes saved</span>
+              </span>
+            )}
+            {autosaveStatus === 'error' && (
+              <span className="text-[10px] text-rose-400 flex items-center space-x-1">
+                <AlertCircle className="h-3 w-3 text-rose-400" />
+                <span>Save failed (retrying)</span>
+              </span>
+            )}
           </div>
         </div>
 
@@ -856,12 +924,12 @@ const Builder = () => {
           </button>
 
           <button
-            onClick={() => handleSave()}
-            disabled={saving}
+            onClick={handleManualSave}
+            disabled={saving || autosaveStatus === 'saving'}
             className="flex items-center space-x-1 bg-dark-900 border border-dark-700 hover:bg-dark-800 text-white px-3 py-1.5 rounded-lg transition disabled:opacity-50 flex-shrink-0"
           >
-            {saving ? <RefreshCw className="h-3.5 w-3.5 animate-spin" /> : <Cloud className="h-3.5 w-3.5" />}
-            <span>{saving ? 'Saving...' : 'Save'}</span>
+            {(saving || autosaveStatus === 'saving') ? <RefreshCw className="h-3.5 w-3.5 animate-spin" /> : <Cloud className="h-3.5 w-3.5" />}
+            <span>{(saving || autosaveStatus === 'saving') ? 'Saving...' : 'Save'}</span>
           </button>
 
           <button
