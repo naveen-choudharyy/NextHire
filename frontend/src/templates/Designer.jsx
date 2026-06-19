@@ -33,7 +33,7 @@ const Designer = ({ content }) => {
       {/* Summary */}
       {personal.summary && (
         <div className="mb-6">
-          <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest mb-2">My Story</h2>
+          <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest mb-2" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>My Story</h2>
           <p className="text-justify text-stone-600 leading-relaxed text-[14px]">{personal.summary}</p>
         </div>
       )}
@@ -47,10 +47,10 @@ const Designer = ({ content }) => {
           {/* Experience */}
           {experience.length > 0 && (
             <div className="space-y-3">
-              <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest border-b border-stone-200 pb-1">Professional Experience</h2>
+              <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest border-b border-stone-200 pb-1" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Professional Experience</h2>
               <div className="space-y-4">
                 {experience.map((exp, idx) => (
-                  <div key={idx} className="space-y-1">
+                  <div key={idx} className="space-y-1" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
                     <div className="flex justify-between items-baseline font-semibold text-stone-900">
                       <span className="text-[13.5px] font-bold">{exp.role}</span>
                       <span className="text-[11.5px] text-stone-500 font-mono">{exp.startYear} – {exp.endYear || 'Present'}</span>
@@ -66,10 +66,10 @@ const Designer = ({ content }) => {
           {/* Projects */}
           {projects.length > 0 && (
             <div className="space-y-3">
-              <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest border-b border-stone-200 pb-1">Featured Work</h2>
+              <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest border-b border-stone-200 pb-1" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Featured Work</h2>
               <div className="space-y-4">
                 {projects.map((proj, idx) => (
-                  <div key={idx} className="space-y-1">
+                  <div key={idx} className="space-y-1" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
                     <div className="flex justify-between items-baseline">
                       <span className="text-[13.5px] font-extrabold text-stone-900">{proj.name}</span>
                       {proj.link && (
@@ -99,7 +99,7 @@ const Designer = ({ content }) => {
           {/* Skills */}
           {skills.length > 0 && (
             <div className="space-y-2">
-              <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest border-b border-stone-200 pb-1">Creative Skills</h2>
+              <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest border-b border-stone-200 pb-1" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Creative Skills</h2>
               <div className="flex flex-wrap gap-1.5 pt-1">
                 {skills.map((skill, idx) => (
                   <span key={idx} className="bg-rose-500/10 text-rose-600 text-[12px] px-2 py-0.5 rounded font-medium border border-rose-500/10">
@@ -113,10 +113,10 @@ const Designer = ({ content }) => {
           {/* Education */}
           {education.length > 0 && (
             <div className="space-y-2">
-              <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest border-b border-stone-200 pb-1">Education</h2>
+              <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest border-b border-stone-200 pb-1" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Education</h2>
               <div className="space-y-3">
                 {education.map((edu, idx) => (
-                  <div key={idx} className="space-y-0.5">
+                  <div key={idx} className="space-y-0.5" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
                     <div className="font-bold text-stone-900 leading-tight">{edu.school}</div>
                     <div className="text-[12.5px] text-stone-600">{edu.degree}</div>
                     <div className="text-[11.5px] text-stone-400 font-mono">{edu.startYear} – {edu.endYear}</div>
@@ -129,10 +129,10 @@ const Designer = ({ content }) => {
           {/* Certifications */}
           {certifications.length > 0 && (
             <div className="space-y-2">
-              <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest border-b border-stone-200 pb-1">Credentials</h2>
+              <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest border-b border-stone-200 pb-1" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Credentials</h2>
               <div className="space-y-2 text-[12.5px] text-stone-600">
                 {certifications.map((cert, idx) => (
-                  <div key={idx} className="leading-tight">
+                  <div key={idx} className="leading-tight" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
                     <strong>{cert.name}</strong>
                     <div className="text-stone-400 text-[11px]">{cert.issuer} ({cert.year})</div>
                   </div>
@@ -144,10 +144,10 @@ const Designer = ({ content }) => {
           {/* Achievements */}
           {achievements.length > 0 && (
             <div className="space-y-2">
-              <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest border-b border-stone-200 pb-1">Achievements</h2>
+              <h2 className="text-[13.5px] font-bold text-rose-500 uppercase tracking-widest border-b border-stone-200 pb-1" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Achievements</h2>
               <ul className="list-disc list-inside space-y-1 text-[12.5px] text-stone-600">
                 {achievements.map((ach, idx) => (
-                  <li key={idx} className="leading-tight">{ach}</li>
+                  <li key={idx} className="leading-tight" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>{ach}</li>
                 ))}
               </ul>
             </div>

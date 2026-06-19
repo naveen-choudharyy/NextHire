@@ -20,7 +20,7 @@ const SoftwareDeveloper = ({ content }) => {
       case 'skills':
         return skills.length > 0 && (
           <div className="mb-5" key="skills">
-            <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2">Technical Toolkit</h2>
+            <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Technical Toolkit</h2>
             <div className="flex flex-wrap gap-1.5 pt-1">
               {skills.map((skill, idx) => (
                 <span key={idx} className="bg-slate-100 text-slate-800 text-[12px] px-2.5 py-0.5 rounded border border-slate-200 font-semibold font-mono">
@@ -33,10 +33,10 @@ const SoftwareDeveloper = ({ content }) => {
       case 'projects':
         return projects.length > 0 && (
           <div className="mb-5" key="projects">
-            <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2">Featured Projects</h2>
+            <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Featured Projects</h2>
             <div className="space-y-4">
               {projects.map((proj, idx) => (
-                <div key={idx} className="space-y-1">
+                <div key={idx} className="space-y-1" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
                   <div className="flex justify-between items-center">
                     <h4 className="font-extrabold text-slate-900 text-[16px]">
                       {proj.name} 
@@ -62,10 +62,10 @@ const SoftwareDeveloper = ({ content }) => {
       case 'experience':
         return experience.length > 0 && (
           <div className="mb-5" key="experience">
-            <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2">Work & Internships</h2>
+            <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Work & Internships</h2>
             <div className="space-y-4">
               {experience.map((exp, idx) => (
-                <div key={idx} className="space-y-1">
+                <div key={idx} className="space-y-1" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
                   <div className="flex justify-between items-start">
                     <div>
                       <h4 className="font-bold text-slate-900 text-[16px]">{exp.role}</h4>
@@ -86,7 +86,7 @@ const SoftwareDeveloper = ({ content }) => {
 
         const renderEduGroupSD = (items) => {
           return items.map((edu, idx) => (
-            <div key={idx} className="flex justify-between items-start">
+            <div key={idx} className="flex justify-between items-start" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
               <div>
                 <div className="font-bold text-slate-900">{edu.school}</div>
                 <div className="text-slate-600">{edu.degree} {edu.gpa && `— GPA/CGPA: ${edu.gpa}`}</div>
@@ -101,7 +101,7 @@ const SoftwareDeveloper = ({ content }) => {
 
         return education.length > 0 && (
           <div className="mb-5" key="education">
-            <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2">Education</h2>
+            <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Education</h2>
             
             <div className="space-y-4 pt-1">
               {sColleges.length > 0 && (
@@ -137,10 +137,10 @@ const SoftwareDeveloper = ({ content }) => {
       case 'certifications':
         return certifications.length > 0 && (
           <div className="mb-5" key="certifications">
-            <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2">Credentials</h2>
+            <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Credentials</h2>
             <ul className="space-y-1.5 text-slate-600">
               {certifications.map((cert, idx) => (
-                <li key={idx} className="text-[12.5px] leading-tight">
+                <li key={idx} className="text-[12.5px] leading-tight" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
                   <strong>{cert.name}</strong> <span className="text-slate-450">•</span> {cert.issuer} ({cert.year})
                 </li>
               ))}
@@ -150,10 +150,10 @@ const SoftwareDeveloper = ({ content }) => {
       case 'achievements':
         return achievements.length > 0 && (
           <div className="mb-5" key="achievements">
-            <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2">Key Awards</h2>
+            <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Key Awards</h2>
             <ul className="list-disc list-inside space-y-1 text-slate-600">
               {achievements.map((ach, idx) => (
-                <li key={idx} className="text-[12.5px] leading-relaxed text-justify">{ach}</li>
+                <li key={idx} className="text-[12.5px] leading-relaxed text-justify" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>{ach}</li>
               ))}
             </ul>
           </div>
@@ -187,7 +187,7 @@ const SoftwareDeveloper = ({ content }) => {
       {/* Summary */}
       {personal.summary && (
         <div className="mb-5">
-          <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2">Profile</h2>
+          <h2 className="text-[13.5px] font-bold text-slate-900 uppercase tracking-widest border-b border-slate-300 pb-1 mb-2" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Profile</h2>
           <p className="text-justify leading-relaxed text-slate-700">{personal.summary}</p>
         </div>
       )}

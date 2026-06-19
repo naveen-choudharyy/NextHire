@@ -108,7 +108,7 @@ const ATSFriendly = ({ content }) => {
 
             if (resolvedIsSchool) {
               return (
-                <div key={idx} className="space-y-0.5 text-[14px] text-black">
+                <div key={idx} className="space-y-0.5 text-[14px] text-black" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
                   <div className="flex justify-between">
                     <span className="font-bold">{edu.degree || ''}</span>
                     <span className="font-normal">{displayGpa}</span>
@@ -121,7 +121,7 @@ const ATSFriendly = ({ content }) => {
               );
             } else {
               return (
-                <div key={idx} className="space-y-0.5 text-[14px] text-black">
+                <div key={idx} className="space-y-0.5 text-[14px] text-black" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
                   <div className="flex justify-between">
                     <span className="font-bold">{edu.degree || ''}</span>
                     <span className="font-normal">{schoolDetails}</span>
@@ -138,7 +138,7 @@ const ATSFriendly = ({ content }) => {
 
         return education.length > 0 && (
           <div className="mt-4 mb-2.5" key="education">
-            <h2 className="text-[16px] font-bold tracking-wider text-black">Education</h2>
+            <h2 className="text-[16px] font-bold tracking-wider text-black" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Education</h2>
             <div className="border-b border-black mt-1 mb-2"></div>
             
             <div className="space-y-4">
@@ -175,11 +175,11 @@ const ATSFriendly = ({ content }) => {
       case 'experience':
         return experience.length > 0 && (
           <div className="mt-4 mb-2.5" key="experience">
-            <h2 className="text-[16px] font-bold tracking-wider text-black">Experience</h2>
+            <h2 className="text-[16px] font-bold tracking-wider text-black" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Experience</h2>
             <div className="border-b border-black mt-1 mb-2"></div>
             <div className="space-y-3">
               {experience.map((exp, idx) => (
-                <div key={idx} className="space-y-0.5 text-[14px]">
+                <div key={idx} className="space-y-0.5 text-[14px]" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
                   <div className="flex justify-between text-black">
                     <span className="font-bold">{exp.role || ''}</span>
                     <span className="font-normal">{exp.startYear && exp.endYear ? `${exp.startYear} – ${exp.endYear}` : (exp.startYear || exp.endYear || '')}</span>
@@ -197,11 +197,11 @@ const ATSFriendly = ({ content }) => {
       case 'projects':
         return projects.length > 0 && (
           <div className="mt-4 mb-2.5" key="projects">
-            <h2 className="text-[16px] font-bold tracking-wider text-black">Projects</h2>
+            <h2 className="text-[16px] font-bold tracking-wider text-black" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Projects</h2>
             <div className="border-b border-black mt-1 mb-2"></div>
             <div className="space-y-3">
               {projects.map((proj, idx) => (
-                <div key={idx} className="space-y-0.5 text-[14px]">
+                <div key={idx} className="space-y-0.5 text-[14px]" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
                   <div className="flex justify-between items-baseline text-black">
                     <span className="font-bold">
                       {proj.name || ''}
@@ -228,7 +228,7 @@ const ATSFriendly = ({ content }) => {
       case 'skills':
         return ((skills.languages) || (skills.frameworks) || (skills.databases) || (skills.tools) || (skills.soft) || (skills.other)) && (
           <div className="mt-4 mb-2.5" key="skills">
-            <h2 className="text-[16px] font-bold tracking-wider text-black">Technical Skills</h2>
+            <h2 className="text-[16px] font-bold tracking-wider text-black" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Technical Skills</h2>
             <div className="border-b border-black mt-1 mb-2"></div>
             <div className="space-y-1 text-black leading-relaxed text-[14px]">
               {skills.languages && (
@@ -267,11 +267,11 @@ const ATSFriendly = ({ content }) => {
       case 'certifications':
         return certifications.length > 0 && (
           <div className="mt-4 mb-2.5" key="certifications">
-            <h2 className="text-[16px] font-bold tracking-wider text-black">Certifications</h2>
+            <h2 className="text-[16px] font-bold tracking-wider text-black" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Certifications</h2>
             <div className="border-b border-black mt-1 mb-2"></div>
             <div className="space-y-1 text-black text-[14px]" style={{ paddingLeft: '15px' }}>
               {certifications.map((cert, idx) => (
-                <div key={idx} className="flex items-start text-justify leading-relaxed">
+                <div key={idx} className="flex items-start text-justify leading-relaxed" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
                   <span className="mr-2 select-none text-[14px]">•</span>
                   <span className="flex-1">
                     <strong>{cert.name}</strong> — {cert.issuer} ({cert.year})
@@ -284,11 +284,11 @@ const ATSFriendly = ({ content }) => {
       case 'achievements':
         return achievements.length > 0 && (
           <div className="mt-4 mb-2.5" key="achievements">
-            <h2 className="text-[16px] font-bold tracking-wider text-black">Achievements</h2>
+            <h2 className="text-[16px] font-bold tracking-wider text-black" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Achievements</h2>
             <div className="border-b border-black mt-1 mb-2"></div>
             <div className="space-y-1 text-black text-[14px]" style={{ paddingLeft: '15px' }}>
               {achievements.map((ach, idx) => (
-                <div key={idx} className="flex items-start text-justify leading-relaxed">
+                <div key={idx} className="flex items-start text-justify leading-relaxed" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
                   <span className="mr-2 select-none text-[14px]">•</span>
                   <span className="flex-1">{ach}</span>
                 </div>
@@ -323,7 +323,7 @@ const ATSFriendly = ({ content }) => {
       {/* Profile Summary (Optional) */}
       {personal.summary && (
         <div className="mt-4 mb-2.5">
-          <h2 className="text-[16px] font-bold tracking-wider text-black">Professional Summary</h2>
+          <h2 className="text-[16px] font-bold tracking-wider text-black" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Professional Summary</h2>
           <div className="border-b border-black mt-1 mb-2"></div>
           <p className="text-justify text-black leading-relaxed">{personal.summary}</p>
         </div>

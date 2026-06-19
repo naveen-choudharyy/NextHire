@@ -62,7 +62,7 @@ const Modern = ({ content }) => {
               <h3 className="text-[13.5px] font-bold uppercase text-indigo-400 tracking-wider">Certifications</h3>
               <div className="space-y-2 text-[12.5px]">
                 {certifications.map((cert, idx) => (
-                  <div key={idx} className="border-l-2 border-slate-700 pl-2">
+                  <div key={idx} className="border-l-2 border-slate-700 pl-2" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
                     <div className="font-bold text-white leading-tight">{cert.name}</div>
                     <div className="text-slate-400 text-[11.5px]">{cert.issuer} ({cert.year})</div>
                   </div>
@@ -90,7 +90,7 @@ const Modern = ({ content }) => {
         {/* Profile Summary */}
         {personal.summary && (
           <div className="space-y-2">
-            <h2 className="text-[16px] font-bold uppercase tracking-wider text-slate-900 border-b-2 border-indigo-500 pb-1.5">Profile</h2>
+            <h2 className="text-[16px] font-bold uppercase tracking-wider text-slate-900 border-b-2 border-indigo-500 pb-1.5" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Profile</h2>
             <p className="text-justify leading-relaxed text-slate-700">{personal.summary}</p>
           </div>
         )}
@@ -98,10 +98,10 @@ const Modern = ({ content }) => {
         {/* Experience */}
         {experience.length > 0 && (
           <div className="space-y-3">
-            <h2 className="text-[16px] font-bold uppercase tracking-wider text-slate-900 border-b-2 border-indigo-500 pb-1.5">Experience</h2>
+            <h2 className="text-[16px] font-bold uppercase tracking-wider text-slate-900 border-b-2 border-indigo-500 pb-1.5" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Experience</h2>
             <div className="space-y-4">
               {experience.map((exp, idx) => (
-                <div key={idx} className="space-y-1">
+                <div key={idx} className="space-y-1" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
                   <div className="flex justify-between items-start">
                     <div>
                       <h4 className="font-bold text-slate-900">{exp.role}</h4>
@@ -120,10 +120,10 @@ const Modern = ({ content }) => {
         {/* Projects */}
         {projects.length > 0 && (
           <div className="space-y-3">
-            <h2 className="text-[16px] font-bold uppercase tracking-wider text-slate-900 border-b-2 border-indigo-500 pb-1.5">Projects</h2>
+            <h2 className="text-[16px] font-bold uppercase tracking-wider text-slate-900 border-b-2 border-indigo-500 pb-1.5" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Projects</h2>
             <div className="space-y-4">
               {projects.map((proj, idx) => (
-                <div key={idx} className="space-y-1">
+                <div key={idx} className="space-y-1" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
                   <div className="flex justify-between items-center">
                     <h4 className="font-bold text-slate-900">
                       {proj.name} {proj.tech && <span className="font-normal text-slate-500">({proj.tech})</span>}
@@ -149,10 +149,10 @@ const Modern = ({ content }) => {
         {/* Education */}
         {education.length > 0 && (
           <div className="space-y-3">
-            <h2 className="text-[16px] font-bold uppercase tracking-wider text-slate-900 border-b-2 border-indigo-500 pb-1.5">Education</h2>
+            <h2 className="text-[16px] font-bold uppercase tracking-wider text-slate-900 border-b-2 border-indigo-500 pb-1.5" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Education</h2>
             <div className="space-y-3">
               {education.map((edu, idx) => (
-                <div key={idx} className="flex justify-between items-start">
+                <div key={idx} className="flex justify-between items-start" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>
                   <div>
                     <h4 className="font-bold text-slate-900">{edu.school}</h4>
                     <div className="text-slate-600">{edu.degree} {edu.gpa && `— GPA: ${edu.gpa}`}</div>
@@ -170,10 +170,10 @@ const Modern = ({ content }) => {
         {/* Achievements */}
         {achievements.length > 0 && (
           <div className="space-y-3">
-            <h2 className="text-[16px] font-bold uppercase tracking-wider text-slate-900 border-b-2 border-indigo-500 pb-1.5">Achievements</h2>
+            <h2 className="text-[16px] font-bold uppercase tracking-wider text-slate-900 border-b-2 border-indigo-500 pb-1.5" style={{ breakAfter: 'avoid', pageBreakAfter: 'avoid' }}>Achievements</h2>
             <ul className="list-disc list-inside space-y-1 text-slate-600">
               {achievements.map((ach, idx) => (
-                <li key={idx} className="text-justify leading-relaxed">{ach}</li>
+                <li key={idx} className="text-justify leading-relaxed" style={{ breakInside: 'avoid', pageBreakInside: 'avoid' }}>{ach}</li>
               ))}
             </ul>
           </div>
