@@ -70,25 +70,15 @@ const Home = () => {
         {/* Hero Banner Visual */}
         <div className="mx-auto mt-16 flex max-w-2xl sm:mt-24 lg:ml-10 lg:mr-0 lg:mt-0 lg:max-w-none lg:flex-none xl:ml-32">
           <div className="max-w-3xl flex-none sm:max-w-5xl lg:max-w-none">
-            <div className="rounded-xl bg-dark-800/40 p-4 ring-1 ring-white/10 backdrop-blur-md">
-              <div className="glass-premium rounded-lg p-6 w-[340px] sm:w-[460px] border border-white/5 shadow-2xl relative overflow-hidden">
-                <div className="flex justify-between items-center mb-4">
-                  <div className="h-3 w-16 bg-brand-500/20 rounded-full" />
-                  <div className="h-5 w-24 bg-brand-500/20 text-brand-400 text-xs font-bold rounded-full px-2 py-0.5 text-center">
-                    ATS Score: 94/100
-                  </div>
-                </div>
-                <div className="space-y-3">
-                  <div className="h-4 w-3/4 bg-white/10 rounded" />
-                  <div className="h-4 w-1/2 bg-white/10 rounded" />
-                  <div className="border-t border-white/5 my-4 pt-3 space-y-2">
-                    <div className="h-3 w-full bg-white/5 rounded" />
-                    <div className="h-3 w-5/6 bg-white/5 rounded" />
-                    <div className="h-3 w-4/5 bg-white/5 rounded" />
-                  </div>
-                </div>
-                {/* Floating features */}
-                <div className="absolute -bottom-6 -right-6 h-24 w-24 bg-accent-500/10 rounded-full blur-xl" />
+            <div className="rounded-2xl bg-dark-800/40 p-2 lg:p-3 ring-1 ring-white/10 backdrop-blur-md shadow-2xl relative group">
+              <img
+                src="/hero_business.png"
+                alt="NextHire Professional Career Builder"
+                className="w-[340px] sm:w-[500px] lg:w-[560px] h-auto rounded-xl object-cover hover:scale-[1.02] transition duration-500 ease-out"
+              />
+              {/* ATS Badge Overlay */}
+              <div className="absolute top-6 right-6 bg-brand-500/90 text-white text-xs font-bold rounded-full px-3 py-1 text-center shadow-lg backdrop-blur-sm ring-1 ring-white/20 animate-pulse">
+                ATS Score: 94/100
               </div>
             </div>
           </div>
