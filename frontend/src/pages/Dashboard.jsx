@@ -82,6 +82,7 @@ const Dashboard = () => {
               setShowQRScreen(false);
               fetchProfile();
               fetchPaymentHistory();
+              handleCreateResume();
               clearInterval(interval);
             }
           }
@@ -225,6 +226,7 @@ const Dashboard = () => {
         fetchProfile();
         fetchPaymentHistory();
         setPaymentLoading(false);
+        handleCreateResume();
         return;
       }
 
@@ -255,6 +257,7 @@ const Dashboard = () => {
                 setShowCheckout(false);
                 fetchProfile();
                 fetchPaymentHistory();
+                handleCreateResume();
               } else {
                 const verifyErr = verifyData.message || verifyData.error || 'Payment verification failed';
                 alert(`Verification failed: ${verifyErr}`);
