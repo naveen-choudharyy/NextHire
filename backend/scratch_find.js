@@ -3,7 +3,7 @@ import { Resume } from './models/Resume.js';
 import { config } from './config/index.js';
 
 async function main() {
-  await mongoose.connect(config.mongodbUri || 'mongodb://127.0.0.1:27017/nexthire');
+  await mongoose.connect(config.databaseUri);
   console.log('Connected to MongoDB');
 
   const resumeId = '52fc7a1b-c553-49bd-8e53-b676eb8dbc67';

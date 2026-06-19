@@ -3,7 +3,7 @@ import { Payment } from './models/Payment.js';
 import { config } from './config/index.js';
 
 async function main() {
-  await mongoose.connect(config.mongodbUri || 'mongodb://127.0.0.1:27017/nexthire');
+  await mongoose.connect(config.databaseUri);
   console.log('Connected to MongoDB');
 
   const payments = await Payment.find().sort({ createdAt: -1 }).limit(10);

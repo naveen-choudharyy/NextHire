@@ -1,8 +1,13 @@
 import dotenv from 'dotenv';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
-// Load env variables
-dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Load env variables from backend root directory regardless of CWD
+dotenv.config({ path: path.resolve(__dirname, '../.env') });
+
 
 const requiredEnv = [
   'RAZORPAY_KEY_ID',
@@ -18,7 +23,8 @@ for (const env of requiredEnv) {
 
 export const config = {
   port: process.env.PORT || 5001,
-  databaseUri: process.env.DATABASE_URI || 'mongodb://127.0.0.1:27017/nexthire',
+  databaseUri: process.env.DATABASE_URI || process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/nexthire',
+  mongodbUri: process.env.DATABASE_URI || process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/nexthire',
   jwtSecret: process.env.JWT_SECRET || 'nexthire_jwt_secret_key_123456',
   jwtRefreshSecret: process.env.JWT_REFRESH_SECRET || 'nexthire_jwt_refresh_secret_key_123456',
   openaiApiKey: process.env.OPENAI_API_KEY || '',
