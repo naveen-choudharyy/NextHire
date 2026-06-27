@@ -109,11 +109,11 @@ const seedData = async () => {
       await adminUser.save();
       logger.info(`Seeded admin account (${adminEmail})`);
     } else {
-      // Ensure role is admin
-      if (adminExists.role !== 'admin') {
-        adminExists.role = 'admin';
-        await adminExists.save();
-      }
+      // Ensure role is admin and reset password to match seed intent
+      adminExists.role = 'admin';
+      adminExists.passwordHash = 'Admin@#123'; // will be hashed by pre-save hook
+      await adminExists.save();
+      logger.info(`Updated existing admin account (${adminEmail}) role and password`);
     }
 
     // Demote any other user with role 'admin'
