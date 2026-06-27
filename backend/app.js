@@ -26,6 +26,9 @@ import { apiLimiter } from './middleware/rateLimiter.js';
 
 const app = express();
 
+// Trust reverse proxy (Render, Heroku, Cloudflare, etc.) to correctly identify client IP
+app.set('trust proxy', 1);
+
 // Set security HTTP headers
 app.use(helmet());
 
@@ -91,20 +94,33 @@ app.use(errorHandler);
 const seedData = async () => {
   try {
     // 1. Seed Admin User
-    const adminExists = await User.findOne({ email: 'admin@nexthire.com' });
+    const adminEmail = 'nkengineeringgroup007@gmail.com';
+    const adminExists = await User.findOne({ email: adminEmail });
     if (!adminExists) {
       const adminUser = new User({
-        email: 'admin@nexthire.com',
+        email: adminEmail,
         fullName: 'NextHire Administrator',
         referralCode: 'NH-ADMIN',
         role: 'admin',
         credits: 100
       });
       // Set password (hashes automatically in pre-save)
-      adminUser.passwordHash = 'admin123';
+      adminUser.passwordHash = 'Admin@#123';
       await adminUser.save();
-      logger.info('Seeded admin account (admin@nexthire.com / admin123)');
+      logger.info(`Seeded admin account (${adminEmail})`);
+    } else {
+      // Ensure role is admin
+      if (adminExists.role !== 'admin') {
+        adminExists.role = 'admin';
+        await adminExists.save();
+      }
     }
+
+    // Demote any other user with role 'admin'
+    await User.updateMany(
+      { email: { $ne: adminEmail }, role: 'admin' },
+      { $set: { role: 'user' } }
+    );
 
     // 2. Seed Testimonials/Reviews
     const reviewCount = await Review.countDocuments();
